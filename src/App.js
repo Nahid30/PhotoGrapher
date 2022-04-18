@@ -11,12 +11,16 @@ import SignUp from './components/SignUp/SignUp';
 import NotFound from './components/NotFound/NotFound';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import CheckOut from './components/CheckOut/CheckOut';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <div>
 
       <Header></Header>
+
+      <ToastContainer />
 
       <Routes>
 

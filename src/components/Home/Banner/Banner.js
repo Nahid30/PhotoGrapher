@@ -10,15 +10,15 @@ const Banner = () => {
             <Carousel>
 
                 <Carousel.Item>
-                    <img  src={banner3} height={600} alt="" />
+                    <img className='img-fluid' src={banner3} height={600} alt="" />
                 </Carousel.Item>
 
                 <Carousel.Item>
-                    <img src={banner2} height={600} alt="" />
+                    <img className='img-fluid' src={banner2} height={600} alt="" />
                 </Carousel.Item>
 
                 <Carousel.Item>
-                    <img src={banner1} height={600} alt="" />
+                    <img className='img-fluid' src={banner1} height={600} alt="" />
                 </Carousel.Item>
                 
             </Carousel>

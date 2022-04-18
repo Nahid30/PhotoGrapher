@@ -1,10 +1,13 @@
 import React from 'react';
-import './Footer.css';
+import { Row } from 'react-bootstrap';
+
 
 const Footer = () => {
+    const today = new Date();
+    const year = today.getFullYear();
     return (
-        <div className='footer'>
-            <h3>This is Footer</h3>
+        <div className='bg-dark text-muted text-center'>
+            <p className='py-5'>Copyrights &copy; {year} | All Rights Reserved by PhotoGrapher.com  </p>
         </div>
     );
 };

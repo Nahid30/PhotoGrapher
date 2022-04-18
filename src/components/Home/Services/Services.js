@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Row } from 'react-bootstrap';
 import Service from '../Service/Service';
 
 const Services = () => {
@@ -15,14 +15,21 @@ const Services = () => {
     return (
         <div className='container'>
             <h2 className='text-danger text-center my-5'>My Services</h2>
-            <div className='d-flex justify-content-center align-items-center mb-5'>
-                {
-                    carts.map(cart => <Service
-                        key={cart.id}
-                        cart={cart}
-                    ></Service>)
-                }
+
+            <div className='mx-auto my-5'>
+                <Row className='g-4' md={2} lg={3} xs={1}  >
+                    {
+                        carts.map(cart => <Service
+                            key={cart.id}
+                            cart={cart}
+                        ></Service>)
+                    }
+                </Row>
             </div>
+
+
+
+
         </div>
     );
 };
