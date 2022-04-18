@@ -86,18 +86,19 @@ const Login = () => {
                 <Form onSubmit={handleUserLogin} className='w-50 '>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control onBlur={handleEmailBlur} type="email" placeholder="Enter email" />
+                        <Form.Control onBlur={handleEmailBlur} type="email" placeholder="Enter email" required />
                         <Form.Text className="text-danger">{emailError}</Form.Text>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control onBlur={handlePasswordBlur} type="password" placeholder="Password" />
+                        <Form.Control onBlur={handlePasswordBlur} type="password" placeholder="Password" required />
                     </Form.Group>
 
                     <p>Forget Password? <button onClick={handleForgetPassword} className='btn btn-link'>Password Reset</button></p>
 
                     <p>Don't have account? <Link to='/signup'>Create New Account</Link> </p>
+                    <p className='text-center text-danger'>{error?.message}</p>
 
 
                     <Button variant="danger" type="submit">Login</Button>

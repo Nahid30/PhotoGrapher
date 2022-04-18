@@ -69,33 +69,27 @@ const SignUp = () => {
 
     return (
         <div className='container mt-5 py-4 bg-light'>
-            <h2 className='text-danger text-center mt-4'>Please Register</h2>
+            <h2 className='text-danger text-center mt-4'>Please Sign Up</h2>
             <div className='d-flex justify-content-center'>
                 <Form onSubmit={handleCreateUser} className='w-50 '>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control onBlur={handleNameBlur} type="text" placeholder="Enter Your Name" />
+                        <Form.Control onBlur={handleNameBlur} type="text" placeholder="Enter Your Name" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control onBlur={handleEmailBlur} type="email" placeholder="Enter Your Email" />
-                        <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                        </Form.Text>
+                        <Form.Control onBlur={handleEmailBlur} type="email" placeholder="Enter Your Email" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control onBlur={handlePasswordBlur} type="password" placeholder="Enter Your Password" />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
+                        <Form.Control onBlur={handlePasswordBlur} type="password" placeholder="Enter Your Password" required />
                     </Form.Group>
 
                     <p>Already have an account? <Link to='/login'>Please Login</Link> </p>
-
-                    <Button variant="danger" type="submit">Register</Button>
+                    <p className='text-danger text-center'>{error1?.message}</p>
+                    <Button variant="danger" type="submit">Sign Up</Button>
                 </Form>
 
             </div>
