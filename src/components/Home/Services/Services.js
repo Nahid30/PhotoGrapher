@@ -14,7 +14,7 @@ const Services = () => {
 
     return (
         <div className='container'>
-            <h2 className='text-primary text-center my-5'>My Services</h2>
+            <h2 className='text-danger text-center my-5'>My Services</h2>
             <div className='d-flex justify-content-center align-items-center mb-5'>
                 {
                     carts.map(cart => <Service
