@@ -8,11 +8,11 @@ const Service = (props) => {
             <div>
                 <Card style={{ width: '18rem' }}>
                     <Card.Img variant="top" height={200} src={img} />
-                    <Card.Body>
-                        <Card.Title>{name}</Card.Title>
+                    <Card.Body className='text-center'>
+                        <Card.Title className='text-danger'>{name}</Card.Title>
                         <h6>Price: ${price}</h6>
                         <Card.Text>{text}</Card.Text>
-                        <Button variant="primary">Book Now</Button>
+                        <Button variant="danger">Book Now</Button>
                     </Card.Body>
                 </Card>
             </div>
