@@ -1,9 +1,14 @@
+import { async } from '@firebase/util';
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useAuthState, useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { useAuthState, useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init'
+import Loading from '../Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
+
+
 
 const SignUp = () => {
 
@@ -14,14 +19,16 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     
-
+    const [updateProfile, updating] = useUpdateProfile(auth);
+    
 
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error1,
-      ] = useCreateUserWithEmailAndPassword(auth);
+      ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification : true});
+      
 
     const handleNameBlur = event =>{
         setName(event.target.value);
@@ -33,20 +40,29 @@ const SignUp = () => {
         setPassword(event.target.value);
     }
 
-    if(user){
-        navigate('/services')
+    const location = useLocation()
+    const from = location?.state?.from?.pathname || '/';
+
+    if (user) {
+        navigate(from, { replace: true });
+    }
+    if (loading || updating) {
+        return <Loading></Loading>
     }
 
 
-    const handleCreateUser = event =>{
+    const handleCreateUser = async event =>{
         event.preventDefault();
-        createUserWithEmailAndPassword(email, password)
-       
-
+        
+       await createUserWithEmailAndPassword(email, password)
+       await updateProfile({displayName:name})
+       toast('An Email Verification is Sent & Updated Profile')
+        
 
         if(password.length <6){
             setError('Password Must be 6 Character')
         }
+        
     }  
 
 

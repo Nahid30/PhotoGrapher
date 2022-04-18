@@ -7,6 +7,7 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-
 import auth from '../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { toast } from 'react-toastify';
+import Loading from '../Loading/Loading';
 
 const Login = () => {
 
@@ -17,6 +18,9 @@ const Login = () => {
 
     const location = useLocation()
     const from = location?.state?.from?.pathname || '/';
+
+    
+
 
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
@@ -33,7 +37,10 @@ const Login = () => {
             setEmailError("Enter your Email first to reset password");
         }
 
+        
+
     }
+    
    
 
 
@@ -63,6 +70,9 @@ const Login = () => {
 
     if (user) {
         navigate(from, { replace: true });
+    }
+    if (loading || sending) {
+        return <Loading></Loading>
     }
 
 

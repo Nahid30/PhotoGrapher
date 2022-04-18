@@ -31,7 +31,8 @@ const Header = () => {
                         <Nav>
                             {
                                 user ?
-                                    <div>
+                                    <div >
+                                        <span className='text-danger p-2 mt-2'>{user?.displayName}</span>
                                         <button onClick={handleSignOut} className=' btn btn-danger  rounded '>Sign Out</button>
                                     </div>
                                     :
