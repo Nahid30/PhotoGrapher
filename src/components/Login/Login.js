@@ -1,9 +1,44 @@
 import { Button } from 'react-bootstrap';
-import React from 'react';
+import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import './Login.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Login = () => {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate('');
+
+
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useSignInWithEmailAndPassword(auth);
+
+    const handleEmailBlur = event =>{
+        setEmail(event.target.value);
+    }
+
+    const handlePasswordBlur = event =>{
+        setPassword(event.target.value);
+    }
+
+
+    const handleUserLogin = event =>{
+        event.preventDefault()
+        signInWithEmailAndPassword(email, password)
+    }
+
+    if(user){
+        navigate('/services')
+    }
+
+
     return (
         <div  className='container mt-5 py-4 bg-light'>
             <h2 className='text-danger text-center mt-4'>Please Login</h2>
@@ -11,10 +46,10 @@ const Login = () => {
             <div className='d-flex justify-content-center'>
                 
 
-                <Form className='w-50 '>
+                <Form onSubmit={handleUserLogin} className='w-50 '>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control onBlur={handleEmailBlur} type="email" placeholder="Enter email" />
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
                         </Form.Text>
@@ -22,11 +57,15 @@ const Login = () => {
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control onBlur={handlePasswordBlur} type="password" placeholder="Password" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="Check me out" />
                     </Form.Group>
+
+                    <p>Don't have account? <Link to='/signup'>Create New Account</Link> </p>
+
+
                     <Button variant="danger" type="submit">Login</Button>
                 </Form>
 
