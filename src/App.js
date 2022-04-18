@@ -9,18 +9,23 @@ import About from './components/About/About';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 import NotFound from './components/NotFound/NotFound';
+import RequireAuth from './components/RequireAuth/RequireAuth';
 
 function App() {
   return (
-    <div >
+    <div>
 
-    <Header></Header>
+      <Header></Header>
 
       <Routes>
 
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/services' element={<Services></Services>}></Route>
+        <Route path='/services' element={
+          <RequireAuth>
+            <Services></Services>
+          </RequireAuth>
+        }></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
