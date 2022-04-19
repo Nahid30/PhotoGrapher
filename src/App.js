@@ -13,6 +13,7 @@ import RequireAuth from './components/RequireAuth/RequireAuth';
 import CheckOut from './components/CheckOut/CheckOut';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from './components/Home/Footer/Footer';
 
 function App() {
   return (
@@ -36,9 +37,12 @@ function App() {
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>} ></Route>
+
         <Route path='*' element={<NotFound></NotFound>}></Route>
 
+
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }

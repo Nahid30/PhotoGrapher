@@ -95,7 +95,7 @@ const Login = () => {
                         <Form.Control onBlur={handlePasswordBlur} type="password" placeholder="Password" required />
                     </Form.Group>
 
-                    <p>Forget Password? <button onClick={handleForgetPassword} className='btn btn-link'>Password Reset</button></p>
+                    <p>Forget Password?<button onClick={handleForgetPassword}className='btn btn-link text-decoration-none'>Reset Your Password</button></p>
 
                     <p>Don't have account? <Link to='/signup'>Create New Account</Link> </p>
                     <p className='text-center text-danger'>{error?.message}</p>
