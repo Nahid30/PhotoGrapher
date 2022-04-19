@@ -1,5 +1,9 @@
 # PhotoGrapher 
 
- [PhotoGrapher](https://github.com/facebook/create-react-app).
+Live Site Link [PhotoGrapher](https://fir-assignment-10-7ed92.web.app/).
 
-`* hello `
+`* React-App`
+`* Use Firebase Authentication`
+`* Use Firebase Hooks`
+`* Use React Router`
+`* Use Bootstrap`
